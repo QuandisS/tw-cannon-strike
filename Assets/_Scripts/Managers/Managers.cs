@@ -1,1 +1,1 @@
-public class Managers : PersistentSingleton<Managers> {}
+public class Managers : PersistentSingleton<Managers> {}    

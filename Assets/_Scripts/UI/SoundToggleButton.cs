@@ -1,4 +1,3 @@
-using UnityEngine.EventSystems;
 using UnityEngine;
 
 public class SoundToggleButton : ButtonBase
@@ -6,11 +5,6 @@ public class SoundToggleButton : ButtonBase
     protected override void OnButtonClick()
     {
         AudioSystem.Instance.ToggleMute();
-    }
-
-    public override void OnPointerUp(PointerEventData eventData)
-    {
-        base.OnPointerUp(eventData);
         UpdateButtonColor();
     }
 

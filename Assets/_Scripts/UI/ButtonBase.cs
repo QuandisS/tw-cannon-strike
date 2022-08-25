@@ -12,15 +12,15 @@ public class ButtonBase : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _img = gameObject.GetComponent<Image>();
     }
 
-    public virtual void OnPointerDown(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
         _img.color = Color.grey;        
     }    
 
-    public virtual void OnPointerUp(PointerEventData eventData)
+    public void OnPointerUp(PointerEventData eventData)
     {
-        OnButtonClick();
         _img.color = Color.white;
+        OnButtonClick();
     }
 
     protected virtual void OnButtonClick() {}

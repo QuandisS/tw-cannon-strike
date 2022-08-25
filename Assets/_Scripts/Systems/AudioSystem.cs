@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class AudioSystem : StaticInstance<AudioSystem>
+public class AudioSystem : Singleton<AudioSystem>
 {
     [SerializeField] private AudioClip _musicClip;
     [SerializeField] private AudioClip _shotClip;
@@ -14,7 +14,7 @@ public class AudioSystem : StaticInstance<AudioSystem>
     public void ToggleMute()
     {
         _isMuted = !_isMuted;
-        _audioSource.volume = _isMuted? 0f : 1f;
+        _audioSource.mute = _isMuted;
     }
     
     public void PlayMusic()
@@ -22,14 +22,15 @@ public class AudioSystem : StaticInstance<AudioSystem>
         _audioSource.Play();
     }
 
-    private void OnValidate()
+    protected override void Awake()
     {
+        base.Awake();
         _audioSource = gameObject.GetComponent<AudioSource>();
         _audioSource.clip = _musicClip;
     }
 
     private void Start() 
     {
-        PlayMusic();
+        PlayMusic();   
     }
 }
