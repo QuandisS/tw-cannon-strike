@@ -6,6 +6,8 @@ public class CannonballPooler : Singleton<CannonballPooler>
     private Queue<GameObject> _cannonBallQueue = new Queue<GameObject>();
     private GameObject _cannonBallPrefab;
 
+    public bool IsAnyBallAvailable => _cannonBallQueue.Count > 0;
+
     protected override void Awake()
     {
         base.Awake();
@@ -39,10 +41,13 @@ public class CannonballPooler : Singleton<CannonballPooler>
         }
     }
 
-    public void SpawnFromPool(Vector2 position)
-    {
+    public GameObject SpawnFromPool(Vector3 position)
+    {   
+        if (_cannonBallQueue.Count == 0) return null;
+
         var objToSpawn = _cannonBallQueue.Dequeue();
         objToSpawn.transform.position = (Vector3)position;
         objToSpawn.SetActive(true);        
+        return objToSpawn;
     }
 }

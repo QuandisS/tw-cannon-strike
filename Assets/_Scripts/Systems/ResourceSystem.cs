@@ -9,6 +9,8 @@ public class ResourceSystem : Singleton<ResourceSystem>
     private const string LevelsPath = "Levels";
     private List<Level> _levels;
 
+    public int LevelCount => _levels.Count;
+    
     protected override void Awake()
     {
         base.Awake();

@@ -15,27 +15,7 @@ public class GameManager : Singleton<GameManager>
     public void UpdateGameState(GameState newState)
     {
         _state = newState;
-
-        switch(_state)
-        {
-            case GameState.Menu:
-                break;
-
-            case GameState.LevelLoaded:
-                break;
-                        
-            case GameState.Lose:
-                break;
-            
-            case GameState.Victory:
-                break;
-            
-            default:
-                throw new ArgumentOutOfRangeException(nameof(_state), _state, null);
-        }
-
         OnGameStateChanged.Invoke(_state);
-
     }
 }
 

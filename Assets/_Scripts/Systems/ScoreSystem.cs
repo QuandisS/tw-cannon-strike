@@ -14,6 +14,8 @@ public class ScoreSystem : Singleton<ScoreSystem>
     private int _availableBalls;
     private int _scoredBalls;
 
+    private bool _levelComplete = false;
+
     public void Start()
     {
         _level = ResourceSystem.Instance.GetLevel(GameManager.Instance.CurrentLevelNum);
@@ -27,5 +29,25 @@ public class ScoreSystem : Singleton<ScoreSystem>
         _availableBallsLabel.text = _availableBalls.ToString() + "/" 
             + _level.ballsAvailable.ToString();
         _neededBallslabel.text = _scoredBalls.ToString() + "/" + _level.ballsNeeded;
+    }
+
+    public void AddOneScored()
+    {
+        if (_levelComplete) return;
+
+        _scoredBalls++;
+        UpdateScore();
+
+        if (_scoredBalls == _level.ballsNeeded)
+        {
+            _levelComplete = true;
+            GameManager.Instance.UpdateGameState(GameState.Victory);
+        }
+    }
+
+    public void SubstractOneAvailable()
+    {
+        _availableBalls--;
+        UpdateScore();
     }
 }
