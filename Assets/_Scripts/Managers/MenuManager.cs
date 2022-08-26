@@ -1,4 +1,6 @@
 using UnityEngine.SceneManagement;
+using UnityEngine;
+using System.Collections;
 
 public class MenuManager : Singleton<MenuManager>
 {
@@ -7,11 +9,19 @@ public class MenuManager : Singleton<MenuManager>
 
     public void LoadLevel(int levelNum)
     {
-        SceneManager.LoadScene(LevelPrefix + levelNum.ToString());
+        GameManager.Instance.CurrentLevelNum = levelNum;
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(LevelPrefix + levelNum.ToString());
+        asyncLoad.completed += OnLevelLoaded;
+    }
+
+    private void OnLevelLoaded(AsyncOperation ao)
+    {
+        GameManager.Instance.UpdateGameState(GameState.LevelLoaded);
     }
 
     public void LoadMenu()
     {
         SceneManager.LoadScene(Menu);
+        GameManager.Instance.UpdateGameState(GameState.Menu);
     }
 }
