@@ -22,7 +22,7 @@ public class GameManager : Singleton<GameManager>
 public enum GameState
 {
     Menu,
-    LevelLoaded,
+    LevelAction,
     Lose,
     Victory
 }

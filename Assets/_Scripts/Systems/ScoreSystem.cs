@@ -24,6 +24,12 @@ public class ScoreSystem : Singleton<ScoreSystem>
         UpdateScore();
     }
 
+    private void Update()
+    {
+        if (CheckIfGameLost()) LevelManager.Instance.LoadLevel(
+            GameManager.Instance.CurrentLevelNum); 
+    }
+
     private void UpdateScore()
     {
         _availableBallsLabel.text = _availableBalls.ToString() + "/" 
@@ -31,6 +37,17 @@ public class ScoreSystem : Singleton<ScoreSystem>
         _neededBallslabel.text = _scoredBalls.ToString() + "/" + _level.ballsNeeded;
     }
 
+    private bool CheckIfGameLost()
+    {
+        if (GameManager.Instance.State != GameState.LevelAction ||
+            _levelComplete ||
+            _availableBalls != 0) return false;
+
+        if (GameObject.FindWithTag(Cannonball.ActiveCannonballTag) is not null) return false;
+
+        return true;
+    }
+    
     public void AddOneScored()
     {
         if (_levelComplete) return;
@@ -49,5 +66,5 @@ public class ScoreSystem : Singleton<ScoreSystem>
     {
         _availableBalls--;
         UpdateScore();
-    }
+    } 
 }

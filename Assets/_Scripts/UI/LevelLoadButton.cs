@@ -8,6 +8,6 @@ public class LevelLoadButton : ButtonBase
 
     protected override void OnButtonClick()
     {
-        MenuManager.Instance.LoadLevel(_levelNum);
+        LevelManager.Instance.LoadLevel(_levelNum);
     }
 }

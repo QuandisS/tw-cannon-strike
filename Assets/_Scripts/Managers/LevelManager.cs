@@ -1,7 +1,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class MenuManager : Singleton<MenuManager>
+public class LevelManager : Singleton<LevelManager>
 {
     private const string LevelPrefix = "Level ";
     private const string Menu = "Menu";
@@ -26,7 +26,7 @@ public class MenuManager : Singleton<MenuManager>
 
     private void OnLevelLoaded(AsyncOperation ao)
     {
-        GameManager.Instance.UpdateGameState(GameState.LevelLoaded);
+        GameManager.Instance.UpdateGameState(GameState.LevelAction);
     }
 
     public void LoadMenu()

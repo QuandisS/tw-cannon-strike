@@ -21,7 +21,7 @@ public class CannonballPooler : Singleton<CannonballPooler>
 
     private void HandleGameStateChanged(GameState state)
     {
-        if (state != GameState.LevelLoaded) return;
+        if (state != GameState.LevelAction) return;
 
         var ballCount = ResourceSystem.Instance
             .GetLevel(GameManager.Instance.CurrentLevelNum).ballsAvailable;
