@@ -1297,6 +1297,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 702142256, guid: 134a35d96f0da1e4aa5d3be3a048cd5b, type: 3}
+      propertyPath: _shotClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f08c2a667dd8c344ca305cad1589c646, type: 3}
     - target: {fileID: 6966623616835928210, guid: 134a35d96f0da1e4aa5d3be3a048cd5b, type: 3}
       propertyPath: m_Name
       value: Systems

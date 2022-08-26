@@ -22,6 +22,11 @@ public class AudioSystem : Singleton<AudioSystem>
         _audioSource.Play();
     }
 
+    public void PlayShotSound()
+    {
+        _audioSource.PlayOneShot(_shotClip);
+    }
+
     protected override void Awake()
     {
         base.Awake();

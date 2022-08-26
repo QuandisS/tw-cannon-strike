@@ -24,5 +24,7 @@ public class Cannon : MonoBehaviour
         var cannonball = CannonballPooler.Instance
             .SpawnFromPool(_cannonBallSpawnpoint.position);
         cannonball.GetComponent<Rigidbody2D>().AddForce(direction * _shotForce, ForceMode2D.Impulse);    
+        
+        AudioSystem.Instance.PlayShotSound();
     }
 }
