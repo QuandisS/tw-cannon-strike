@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 
 public static class Utils
 {
-    // Is Mouse over a UI Element? Used for ignoring World clicks through UI
     public static bool IsPointerOverUi()
     {
         if (EventSystem.current.IsPointerOverGameObject())
