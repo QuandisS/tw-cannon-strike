@@ -11,7 +11,8 @@ public class Cannon : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) 
-            && GameManager.Instance.State == GameState.LevelAction) Shot();
+            && GameManager.Instance.State == GameState.LevelAction
+            && !Utils.IsPointerOverUi()) Shot();
     }
 
     private void Shot()
